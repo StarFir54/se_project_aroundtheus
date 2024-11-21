@@ -1,6 +1,10 @@
+@import url("../vendor/normalize.css");
+@import url("../vendor/fonts.css");
+
 .page {
   background-color: black;
   color: white;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
 .page__section {
