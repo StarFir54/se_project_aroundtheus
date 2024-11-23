@@ -59,15 +59,8 @@
   border-color: white;
 }
 
-.cards {
-  margin-top: 30px;
-}
-
-.cards__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  gap: 20px 17px;
-  padding: 0px;
-  margin: 0px;
+@media screen and (max-width: 880px) {
+  .profile {
+    padding: 40px 0 0;
+  }
 }
