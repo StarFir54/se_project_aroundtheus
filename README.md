@@ -1,21 +1,9 @@
 # Project 3: Around The U.S.
 
-### Overview  
+The Around the U.S. Project is a site designed to allow users to display a profile (which includes a name, an image, and a description), as well as to display cards of locations they have visited (Cards include a title, an image, and a description, as well as a like button).
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+The Around the U.S. Project displays use of Media Queries for an adaptive layout, providing a professional looking experience while browsing. It also makes use of the Grid properties CSS allows for (Larger Browsing Screens Only).
+
+GitHub Documentation: https://github.com/StarFir54/se_project_aroundtheus
+
+Video Documentation: https://youtu.be/cdWfv1N2K4M
