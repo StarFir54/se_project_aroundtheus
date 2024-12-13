@@ -40,8 +40,9 @@
   width: 21px;
   height: 18px;
   border-width: 0;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
-  background-image: url(../images/like-hover.svg);
+  opacity: 50%;
 }
