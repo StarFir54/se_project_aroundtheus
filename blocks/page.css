@@ -28,5 +28,6 @@
   .page__logo {
     height: 24px;
     width: 126px;
+    margin-left: 27px;
   }
 }
