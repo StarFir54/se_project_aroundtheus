@@ -77,7 +77,6 @@
   .modal__container {
     max-width: 282px;
     max-height: 322px;
-    border-radius: 1px;
     padding: 22px;
   }
   .modal__heading {
@@ -90,6 +89,8 @@
     max-width: 238px;
     max-height: 46px;
     margin: 15px 0 0;
+    align-self: center;
+    font-size: 14px;
   }
 
   .modal__close {

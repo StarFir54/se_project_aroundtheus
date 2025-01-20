@@ -81,13 +81,16 @@ function handleProfileEditSubmit(e) {
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
+
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal_opened");
 });
 
-closeProfileModal.addEventListener("click", closePopup());
+closeProfileModal.addEventListener("click", () => {
+  closePopup();
+});
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
