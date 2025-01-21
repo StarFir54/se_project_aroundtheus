@@ -8,7 +8,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   color: black;
   display: none;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   padding: 0 19px;
 }
@@ -26,6 +26,7 @@
   max-height: 330px;
   display: flex;
   flex-direction: column;
+  top: 195px;
 }
 
 .modal__heading {
@@ -78,6 +79,7 @@
     max-width: 282px;
     max-height: 322px;
     padding: 22px;
+    top: 123px;
   }
   .modal__heading {
     font-size: 18px;
