@@ -29,6 +29,22 @@
   top: 195px;
 }
 
+.modal__container_image {
+  position: relative;
+  background-color: transparent;
+  border-radius: 10px;
+  max-width: 816px;
+  max-height: 540px;
+  display: flex;
+  flex-direction: column;
+  top: 90px;
+}
+
+.modal__preview-image {
+  max-width: 816px;
+  max-height: 540px;
+}
+
 .modal__heading {
   margin: 0 0 54px;
   font-size: 24px;
@@ -61,6 +77,10 @@
   font-size: 18px;
 }
 
+.modal__button:hover {
+  opacity: 50%;
+}
+
 .modal__close {
   border: none;
   background-color: transparent;
@@ -73,6 +93,16 @@
   background-image: url("../images/close-symbol.svg");
   background-repeat: no-repeat;
   background-size: contain;
+}
+.modal__close:hover {
+  opacity: 50%;
+}
+
+.modal__preview-image_description {
+  font-size: 12px;
+  color: white;
+  padding-top: 10px;
+  margin: 0;
 }
 
 @media screen and (max-width: 660px) {
