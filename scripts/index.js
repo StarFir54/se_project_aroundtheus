@@ -73,6 +73,19 @@ const cardTemplate =
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      closePopup(modal);
+    }
+  };
+  // When the user presses the 'Escape' key, close the modal
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closePopup(modal);
+    }
+  });
 }
 
 function closePopup(modal) {
@@ -128,6 +141,7 @@ function handleAddCardSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardURLInput.value;
   renderCard({ name, link }, cardListEl);
+  addPlaceForm.reset();
   closePopup(addPlaceModal);
 }
 

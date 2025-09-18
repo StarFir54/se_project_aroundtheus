@@ -46,6 +46,7 @@
           <p class="footer__copyright">© 2022 Around The U.S.</p>
         </footer>
       </main>
+      <!-- ------------------------- Edit Profile Modal -------------------------- -->
       <div class="modal" id="profile-edit-modal">
         <div class="modal__container">
           <div class="button modal__close" id="close-profile-modal"></div>
@@ -57,19 +58,33 @@
               type="text"
               name="title"
               placeholder="Jacques Cousteau"
+              required
+              maxlength="40"
+              minlength="2"
             />
+            <span
+              class="modal__input_type_error"
+              id="profile-title-input-error"
+            ></span>
             <input
               class="modal__input"
               id="profile-description-input"
               type="text"
               name="description"
               placeholder="Explorer"
+              required
+              maxlength="200"
+              minlength="2"
             />
-            <button class="modal__button">Save</button>
+            <span
+              class="modal__input_type_error"
+              id="profile-description-input-error"
+            ></span>
+            <button class="modal__button modal__button_disabled">Save</button>
           </form>
         </div>
       </div>
-
+      <!-- -------------------------- Adding Card Modal -------------------------- -->
       <div class="modal" id="add-card-modal">
         <div class="modal__container">
           <div class="button modal__close" id="close-place-modal"></div>
@@ -81,19 +96,33 @@
               type="text"
               name="title"
               placeholder="Title"
+              required
+              maxlength="40"
+              minlength="2"
             />
+            <span
+              class="modal__input_type_error"
+              id="card-title-input-error"
+            ></span>
             <input
               class="modal__input"
               id="card-URL-input"
-              type="text"
+              type="url"
               name="url"
               placeholder="Image Link"
+              required
             />
-            <button class="modal__button">Create</button>
+            <span
+              class="modal__input_type_error"
+              id="card-URL-input-error"
+            ></span>
+            <button class="modal__button modal__button_disabled" disabled>
+              Create
+            </button>
           </form>
         </div>
       </div>
-
+      <!-- ------------------------- Preview Image Modal ------------------------- -->
       <div class="modal" id="preview-image-modal">
         <div class="modal__container_image">
           <div class="button modal__close" id="close-preview-modal"></div>
@@ -102,6 +131,7 @@
         </div>
       </div>
     </div>
+    <!-- ---------------------------- Card Template ---------------------------- -->
     <template id="card-template">
       <li class="card">
         <img src="" class="card__image" alt="" />
@@ -112,7 +142,8 @@
         <button type="button" class="card__delete-button"></button>
       </li>
     </template>
-
+    <!-- --------------------------- Script Imports ---------------------------- -->
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
