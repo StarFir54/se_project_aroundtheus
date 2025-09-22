@@ -59,7 +59,7 @@ const closePreviewModal = previewImageModal.querySelector(
 );
 const previewImage = previewImageModal.querySelector(".modal__preview-image");
 const previewText = previewImageModal.querySelector(
-  ".modal__preview-image_description"
+  ".modal__preview-description"
 );
 
 /* ------------------------- Card List and Template ------------------------- */
@@ -75,21 +75,34 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
 
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      closePopup(modal);
-    }
-  };
-  // When the user presses the 'Escape' key, close the modal
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closePopup(modal);
-    }
+  const modals = document.querySelectorAll(".modal");
+
+  modals.forEach((modal) => {
+    modal.addEventListener("mousedown", (evt) => {
+      if (evt.target.classList.contains("modal_opened")) {
+        closePopup(modal);
+      }
+      if (evt.target.classList.contains("modal__close")) {
+        closePopup(modal);
+      }
+    });
   });
+  document.addEventListener("keydown", handleEscape);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscape);
+}
+
+// When the user presses the 'Escape' key, close the modal
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector("modal_opened");
+    console.log(openedModal);
+
+    closePopup(openedModal);
+  }
 }
 
 function getCardElement(cardData) {

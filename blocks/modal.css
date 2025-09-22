@@ -34,7 +34,7 @@
   top: 195px;
 }
 
-.modal__container_image {
+.modal__image-container {
   position: relative;
   background-color: transparent;
   border-radius: 10px;
@@ -108,14 +108,14 @@
   opacity: 50%;
 }
 
-.modal__preview-image_description {
+.modal__preview-description {
   font-size: 12px;
   color: white;
   padding-top: 10px;
   margin: 0;
 }
 
-.modal__input_type_error {
+.modal__error {
   color: rgba(255, 0, 0, 1);
   font-size: 12px;
   border-top: none;

@@ -62,10 +62,7 @@
               maxlength="40"
               minlength="2"
             />
-            <span
-              class="modal__input_type_error"
-              id="profile-title-input-error"
-            ></span>
+            <span class="modal__error" id="profile-title-input-error"></span>
             <input
               class="modal__input"
               id="profile-description-input"
@@ -77,7 +74,7 @@
               minlength="2"
             />
             <span
-              class="modal__input_type_error"
+              class="modal__error"
               id="profile-description-input-error"
             ></span>
             <button class="modal__button modal__button_disabled">Save</button>
@@ -100,10 +97,7 @@
               maxlength="40"
               minlength="2"
             />
-            <span
-              class="modal__input_type_error"
-              id="card-title-input-error"
-            ></span>
+            <span class="modal__error" id="card-title-input-error"></span>
             <input
               class="modal__input"
               id="card-URL-input"
@@ -112,10 +106,7 @@
               placeholder="Image Link"
               required
             />
-            <span
-              class="modal__input_type_error"
-              id="card-URL-input-error"
-            ></span>
+            <span class="modal__error" id="card-URL-input-error"></span>
             <button class="modal__button modal__button_disabled" disabled>
               Create
             </button>
@@ -124,10 +115,10 @@
       </div>
       <!-- ------------------------- Preview Image Modal ------------------------- -->
       <div class="modal" id="preview-image-modal">
-        <div class="modal__container_image">
+        <div class="modal__image-container">
           <div class="button modal__close" id="close-preview-modal"></div>
           <img src="" class="modal__preview-image" alt="" />
-          <p class="modal__preview-image_description"></p>
+          <p class="modal__preview-description"></p>
         </div>
       </div>
     </div>

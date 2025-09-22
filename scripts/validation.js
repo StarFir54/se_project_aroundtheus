@@ -3,7 +3,7 @@ const config = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
+  inputErrorClass: "modal__error",
   errorClass: "modal__error_visible",
 };
 
@@ -51,9 +51,9 @@ function checkInputValidity(formEl, inputEl, config) {
 }
 
 function setEventListeners(formEl, config) {
-  const { inputSelector } = config;
+  const { inputSelector, submitButtonSelector } = config;
   const inputEls = Array.from(formEl.querySelectorAll(inputSelector));
-  const submitButton = formEl.querySelector(".modal__button");
+  const submitButton = formEl.querySelector(submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, config);
