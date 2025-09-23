@@ -73,20 +73,6 @@ const cardTemplate =
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-
-  // When the user clicks anywhere outside of the modal, close it
-  const modals = document.querySelectorAll(".modal");
-
-  modals.forEach((modal) => {
-    modal.addEventListener("mousedown", (evt) => {
-      if (evt.target.classList.contains("modal_opened")) {
-        closePopup(modal);
-      }
-      if (evt.target.classList.contains("modal__close")) {
-        closePopup(modal);
-      }
-    });
-  });
   document.addEventListener("keydown", handleEscape);
 }
 
@@ -98,7 +84,7 @@ function closePopup(modal) {
 // When the user presses the 'Escape' key, close the modal
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    const openedModal = document.querySelector("modal_opened");
+    const openedModal = document.querySelector(".modal_opened");
     console.log(openedModal);
 
     closePopup(openedModal);
@@ -170,10 +156,6 @@ profileEditBtn.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-closeProfileModal.addEventListener("click", () => {
-  closePopup(profileEditModal);
-});
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 /* ------------------------------- Card Events ------------------------------ */
@@ -182,17 +164,7 @@ placeAddBtn.addEventListener("click", () => {
   openModal(addPlaceModal);
 });
 
-closePlaceModal.addEventListener("click", () => {
-  closePopup(addPlaceModal);
-});
-
 addPlaceForm.addEventListener("submit", handleAddCardSubmit);
-
-/* ------------------------------ Image Events ------------------------------ */
-
-closePreviewModal.addEventListener("click", () => {
-  closePopup(previewImageModal);
-});
 
 /* -------------------------------------------------------------------------- */
 /*                           Rendering Initial Cards                          */
@@ -200,4 +172,18 @@ closePreviewModal.addEventListener("click", () => {
 
 initialCards.forEach((cardData) => {
   renderCard(cardData, cardListEl);
+});
+
+// When the user clicks anywhere outside of the modal, close it
+const modals = document.querySelectorAll(".modal");
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal_opened")) {
+      closePopup(modal);
+    }
+    if (evt.target.classList.contains("modal__close")) {
+      closePopup(modal);
+    }
+  });
 });
