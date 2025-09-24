@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -85,13 +88,11 @@ function closePopup(modal) {
 function handleEscape(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
-    console.log(openedModal);
-
     closePopup(openedModal);
   }
 }
 
-function getCardElement(cardData) {
+/* function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
@@ -117,11 +118,11 @@ function getCardElement(cardData) {
   cardImageEl.setAttribute("alt", cardTitleEl.textContent);
   cardTitleEl.textContent = cardData.name;
   return cardElement;
-}
+} */
 
-function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
+function renderCard(card, wrapper) {
+  /* const cardElement = card; */
+  wrapper.prepend(card);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -171,7 +172,8 @@ addPlaceForm.addEventListener("submit", handleAddCardSubmit);
 /* -------------------------------------------------------------------------- */
 
 initialCards.forEach((cardData) => {
-  renderCard(cardData, cardListEl);
+  const card = new Card(cardData, "#card-template");
+  renderCard(card, cardListEl);
 });
 
 // When the user clicks anywhere outside of the modal, close it
@@ -187,3 +189,21 @@ modals.forEach((modal) => {
     }
   });
 });
+
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormValidator = new FormValidator(
+  config,
+  document.querySelector("#profile-edit-modal")
+);
+const addFormValidator = new FormValidator(
+  config,
+  document.querySelector("#add-card-modal")
+);
