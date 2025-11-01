@@ -92,36 +92,7 @@ function handleEscape(evt) {
   }
 }
 
-/* function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-
-  cardImageEl.addEventListener("click", () => {
-    previewImage.setAttribute("src", cardData.link);
-    previewImage.setAttribute("alt", cardTitleEl.textContent);
-    previewText.textContent = cardData.name;
-    openModal(previewImageModal);
-  });
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImageEl.setAttribute("src", cardData.link);
-  cardImageEl.setAttribute("alt", cardTitleEl.textContent);
-  cardTitleEl.textContent = cardData.name;
-  return cardElement;
-} */
-
 function renderCard(card, wrapper) {
-  /* const cardElement = card; */
   wrapper.prepend(card);
 }
 
@@ -140,7 +111,8 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardURLInput.value;
-  renderCard({ name, link }, cardListEl);
+  const card = new Card({ name, link }, "#card-template");
+  renderCard(card.getView(), cardListEl);
   addPlaceForm.reset();
   closePopup(addPlaceModal);
 }
@@ -173,7 +145,8 @@ addPlaceForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach((cardData) => {
   const card = new Card(cardData, "#card-template");
-  renderCard(card, cardListEl);
+  console.log(card);
+  renderCard(card.getView(), cardListEl);
 });
 
 // When the user clicks anywhere outside of the modal, close it
@@ -189,6 +162,10 @@ modals.forEach((modal) => {
     }
   });
 });
+
+/* -------------------------------------------------------------------------- */
+/*                           Adding Form Validation                           */
+/* -------------------------------------------------------------------------- */
 
 const config = {
   formSelector: ".modal__form",
@@ -207,3 +184,5 @@ const addFormValidator = new FormValidator(
   config,
   document.querySelector("#add-card-modal")
 );
+editFormValidator.enableValidation(config, profileEditForm);
+addFormValidator.enableValidation(config, addPlaceForm);
