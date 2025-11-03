@@ -16,7 +16,7 @@ const initialCards = [
   },
   {
     name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
   {
     name: "Vanoise National Park",
@@ -71,6 +71,24 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 /* -------------------------------------------------------------------------- */
+/*                           Adding Form Validation                           */
+/* -------------------------------------------------------------------------- */
+
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormValidator = new FormValidator(config, profileEditForm);
+const addFormValidator = new FormValidator(config, addPlaceForm);
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
+/* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -96,6 +114,11 @@ function renderCard(card, wrapper) {
   wrapper.prepend(card);
 }
 
+function createCard({ name, link }) {
+  const card = new Card({ name, link }, "#card-template", handleImageClick);
+  renderCard(card.getView(), cardListEl);
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
@@ -111,10 +134,16 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardURLInput.value;
-  const card = new Card({ name, link }, "#card-template");
-  renderCard(card.getView(), cardListEl);
+  createCard({ name, link }, "#card-template", handleImageClick);
   addPlaceForm.reset();
   closePopup(addPlaceModal);
+}
+
+function handleImageClick(card) {
+  previewImage.src = card._link;
+  previewImage.alt = card._name;
+  previewText.textContent = card._name;
+  openModal(previewImageModal);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -129,7 +158,10 @@ profileEditBtn.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+profileEditForm.addEventListener("submit", () => {
+  handleProfileEditSubmit;
+  // editFormVailidator.resetVailidation();
+});
 
 /* ------------------------------- Card Events ------------------------------ */
 
@@ -137,16 +169,17 @@ placeAddBtn.addEventListener("click", () => {
   openModal(addPlaceModal);
 });
 
-addPlaceForm.addEventListener("submit", handleAddCardSubmit);
+addPlaceForm.addEventListener("submit", () => {
+  handleAddCardSubmit;
+  // addFormVailidator.resetVailidation();
+});
 
 /* -------------------------------------------------------------------------- */
 /*                           Rendering Initial Cards                          */
 /* -------------------------------------------------------------------------- */
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template");
-  console.log(card);
-  renderCard(card.getView(), cardListEl);
+  createCard(cardData);
 });
 
 // When the user clicks anywhere outside of the modal, close it
@@ -162,27 +195,3 @@ modals.forEach((modal) => {
     }
   });
 });
-
-/* -------------------------------------------------------------------------- */
-/*                           Adding Form Validation                           */
-/* -------------------------------------------------------------------------- */
-
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__error",
-  errorClass: "modal__error_visible",
-};
-
-const editFormValidator = new FormValidator(
-  config,
-  document.querySelector("#profile-edit-modal")
-);
-const addFormValidator = new FormValidator(
-  config,
-  document.querySelector("#add-card-modal")
-);
-editFormValidator.enableValidation(config, profileEditForm);
-addFormValidator.enableValidation(config, addPlaceForm);

@@ -7,22 +7,23 @@ export default class Card {
   }
 
   _setEventListerers() {
+    this._likeButton = this._cardElement.querySelector(".card__like-button");
+    this._trashButton = this._cardElement.querySelector(".card__delete-button");
+
     /* ------------------------------ Like Buttons ------------------------------ */
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeIcon();
-      });
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeIcon();
+    });
 
     /* ----------------------------- Delete Buttons ----------------------------- */
-    this._cardElement
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => {
-        this._handleDeleteCard();
-      });
+    this._trashButton.addEventListener("click", () => {
+      this._handleDeleteCard();
+    });
 
     /* --------------------------- Preview Card Image --------------------------- */
-    this._cardImageElement.addEventListener("click", this._handleImageClick);
+    this._cardImageElement.addEventListener("click", () => {
+      this._handleImageClick(this);
+    });
   }
 
   /* ----------------------------- Handling Events ---------------------------- */
@@ -36,13 +37,6 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
-
-  /* _handleImageClick() {
-    previewImage.setAttribute("src", cardData.link);
-    previewImage.setAttribute("alt", cardTitleEl.textContent);
-    previewText.textContent = cardData.name;
-    openModal(previewImageModal);
-  } */
 
   /* ---------------------------- Instantiating Card --------------------------- */
   getView() {
