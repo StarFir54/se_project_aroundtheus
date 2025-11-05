@@ -127,6 +127,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
+  editFormValidator.disableButton();
   closePopup(profileEditModal);
 }
 
@@ -136,6 +137,7 @@ function handleAddCardSubmit(e) {
   const link = cardURLInput.value;
   createCard({ name, link }, "#card-template", handleImageClick);
   addPlaceForm.reset();
+  addFormValidator.disableButton();
   closePopup(addPlaceModal);
 }
 
@@ -158,10 +160,7 @@ profileEditBtn.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-profileEditForm.addEventListener("submit", () => {
-  handleProfileEditSubmit;
-  // editFormVailidator.resetVailidation();
-});
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 /* ------------------------------- Card Events ------------------------------ */
 
@@ -169,10 +168,7 @@ placeAddBtn.addEventListener("click", () => {
   openModal(addPlaceModal);
 });
 
-addPlaceForm.addEventListener("submit", () => {
-  handleAddCardSubmit;
-  // addFormVailidator.resetVailidation();
-});
+addPlaceForm.addEventListener("submit", handleAddCardSubmit);
 
 /* -------------------------------------------------------------------------- */
 /*                           Rendering Initial Cards                          */
