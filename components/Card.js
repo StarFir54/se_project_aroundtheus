@@ -6,7 +6,7 @@ export default class Card {
     this._handleImageClick = handleImageClick;
   }
 
-  _setEventListerers() {
+  _setEventListeners() {
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._trashButton = this._cardElement.querySelector(".card__delete-button");
 
@@ -51,7 +51,7 @@ export default class Card {
     this._cardTitleElement.textContent = this._name;
 
     //Set Event Listeners
-    this._setEventListerers();
+    this._setEventListeners();
     //Return the Card
     return this._cardElement;
   }

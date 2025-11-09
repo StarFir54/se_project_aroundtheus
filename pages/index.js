@@ -36,7 +36,6 @@ profileEditButton.addEventListener("click", () => {
   profileModal.open();
 
   const currentInfo = userInfo.getUserInfo();
-  console.log(currentInfo);
   profileModal.setInputValues(currentInfo);
 });
 
