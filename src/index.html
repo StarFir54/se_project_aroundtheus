@@ -13,14 +13,14 @@
       <header class="page__section header">
         <img
           class="page__logo"
-          src="./images/logo.svg"
+          src="<%=require('./images/logo.svg')%>"
           alt="Around the U.S. logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="Avatar"
             class="profile__image"
           />
@@ -135,7 +135,5 @@
         <button type="button" class="card__delete-button"></button>
       </li>
     </template>
-    <!-- --------------------------- Script Imports ---------------------------- -->
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>
