@@ -7,3 +7,5 @@ The Around the U.S. Project displays use of Media Queries for an adaptive layout
 GitHub Documentation: https://starfir54.github.io/se_project_aroundtheus
 
 Video Documentation: https://youtu.be/cdWfv1N2K4M
+
+GitHub Pages Link: https://starfir54.github.io/se_project_aroundtheus
