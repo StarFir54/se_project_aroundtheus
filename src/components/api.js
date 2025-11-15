@@ -16,6 +16,15 @@ class Api {
   }
 
   //Other Methods for Working with the API
+  _methodName() {
+    fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+      method: "GET",
+      headers: {
+        authorization: "cc198a46-cc75-4d47-84b9-642ac9354b28",
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+    });
+  }
 }
 
 const api = new Api({
@@ -35,11 +44,3 @@ api
   .catch((err) => {
     console.error(err); // log the error to the console
   });
-
-fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
-  method: "GET",
-  headers: {
-    authorization: "cc198a46-cc75-4d47-84b9-642ac9354b28",
-    "Content-Type": "application/json; charset=UTF-8",
-  },
-});
