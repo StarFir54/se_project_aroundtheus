@@ -1,3 +1,5 @@
+import "./index.css";
+
 import {
   initialCards,
   profileEditButton,
@@ -14,11 +16,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 
 //Create UserInfo Class Instance
-//
-//Still uncertain why we set the Name & Title/Description with a Class rather than
-//how it was done before the refactor,
-//
-//Need to look into this concept more
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   descriptionSelector: ".profile__description",
