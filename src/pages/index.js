@@ -55,9 +55,9 @@ const profileEditSubmitButton = document
 
 // create an Api object.
 const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-12",
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "51b8259d-f8d1-4b7c-b443-194620edca24",
+    authorization: "61aa6931-dd4a-4c22-9ef6-066d4b443f8c",
     "Content-Type": "application/json",
   },
 });
