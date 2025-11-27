@@ -1,43 +1,52 @@
-import Popup from "./Popup.js";
+import { Popup } from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
-    super(popupSelector);
-    this._handleFormSubmit = handleFormSubmit; //Function Passed in on Initializing
-    this._form = this._selector.querySelector(".modal__form"); //Finds the form for a given Modal/Popup
-    this._inputList = this._form.querySelectorAll(".modal__input"); //Creates an Array of all inputs on a given Modal/Popup
+class PopupWithForm extends Popup {
+  constructor({ modalSelector, handleFormSubmit }) {
+    super(modalSelector);
+    this._form = this._modal.querySelector(".modal__form");
+    this._handleFormSubmit = handleFormSubmit;
+    this._inputList = this._form.querySelectorAll(".modal__input");
+    this._submitButton = this._form.querySelector(".modal__submit");
+    this._submitButtonText = this._submitButton.textContent;
+    this.setEventListeners();
   }
 
   _getInputValues() {
-    //Create an Object to store the Input Values
-    const data = {};
-    //Loop through the input Array to set the name/value pairs for every input
+    const formValues = {};
+
     this._inputList.forEach((input) => {
-      data[input.name] = input.value;
+      formValues[input.name] = input.value;
     });
-    //Returns the Object containing the name/value pairs for all input elements
-    return data;
+    return formValues;
   }
 
-  setInputValues(data) {
-    //Loops through the input Array to set the value/name pairings for all input elements
-    this._inputList.forEach((input) => {
-      input.value = data[input.name];
-    });
+  setSubmitAction(newSubmitHandle) {
+    this._handleFormSubmit = newSubmitHandle;
   }
 
   setEventListeners() {
-    //Inherit parent eventListeners
     super.setEventListeners();
-    //Add the specific submitHandler for Form Modals/Popups
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
     });
   }
 
-  getForm() {
-    //Find the form used in a given Modal/Popup, used for Validation
-    return this._form;
+  reset() {
+    this._form.reset();
+  }
+
+  renderLoading(isLoading, loadingText = "Saving...") {
+    if (isLoading) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
+
+  close() {
+    super.close();
   }
 }
+
+export { PopupWithForm };

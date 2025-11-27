@@ -1,36 +1,35 @@
-export default class Popup {
-  constructor(popupSelector) {
-    this._selector = document.querySelector(popupSelector);
+class Popup {
+  constructor(modalSelector) {
+    this._modal = document.querySelector(modalSelector);
+    this._modalClose = this._modal.querySelector(".modal__close");
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
-  open() {
-    this._selector.classList.add("modal_opened");
-    document.addEventListener("keydown", this._handleEscClose);
-  }
-
-  close() {
-    this._selector.classList.remove("modal_opened");
-    document.removeEventListener("keydown", this._handleEscClose);
-  }
-
-  _handleEscClose = (evt) => {
+  _handleEscClose(evt) {
     if (evt.key === "Escape") {
       this.close();
     }
-  };
+  }
+
+  open() {
+    window.addEventListener("keydown", this._handleEscClose);
+    this._modal.classList.add("modal_open");
+  }
+
+  close() {
+    this._modal.classList.remove("modal_open");
+    window.removeEventListener("keydown", this._handleEscClose);
+  }
 
   setEventListeners() {
-    // Close modal Via close button
-    this._closeButton = this._selector.querySelector(".modal__close");
-    this._closeButton.addEventListener("click", () => {
-      this.close();
-    });
+    this._modalClose.addEventListener("click", () => this.close());
 
-    // Close modal via overlay click
-    this._selector.addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("modal")) {
+    this._modal.addEventListener("mousedown", (evt) => {
+      if (evt.target.classList.contains("modal_open")) {
         this.close();
       }
     });
   }
 }
+
+export { Popup };

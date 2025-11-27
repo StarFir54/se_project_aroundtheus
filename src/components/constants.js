@@ -1,41 +1,27 @@
-export { initialCards, config, profileEditButton, addCardButton };
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
-
-const config = {
+export const configDict = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__error",
-  errorClass: "modal__error_visible",
+  inputErrorSelector: ".modal__input-error",
+  submitButtonSelector: ".modal__submit",
+  inactiveButtonClass: "modal__submit_inactive",
+  errorClass: "modal__input-error_display",
 };
 
-const profileEditButton = document.querySelector(".profile__edit-button");
+export const profilePen = document.querySelector(".profile__pen");
+export const profileAvatar = document.querySelector(".profile__avatar");
+export const avatarEdit = document.querySelector(".profile__avatar-edit");
 
-const addCardButton = document.querySelector(".profile__add-button");
+const profileModal = document.querySelector("#profile-edit");
+const profileFormElement = profileModal.querySelector(".modal__form");
+export const profileFormName = profileFormElement["name"];
+export const profileModalNameInput = profileModal.querySelector(
+  "#profile-modal-name"
+);
+export const profileModalJobInput =
+  profileModal.querySelector("#profile-modal-job");
+
+// Global variables for card template
+export const cardTemplateID = "#card";
+
+// Global variables to support new card addition logic
+export const addCardButton = document.querySelector(".profile__add-button");

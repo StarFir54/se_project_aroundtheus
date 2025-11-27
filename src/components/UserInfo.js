@@ -1,21 +1,28 @@
-export default class UserInfo {
-  constructor({ nameSelector, descriptionSelector }) {
-    this._name = document.querySelector(nameSelector); //Find the Profile Name
-    this._title = document.querySelector(descriptionSelector); //Find the Profile Title/Description
+class UserInfo {
+  constructor({ nameSelector, jobSelector, avatarSelector }) {
+    this._profileName = document.querySelector(nameSelector);
+    this._profileJob = document.querySelector(jobSelector);
+    this._avatarSelector = document.querySelector(avatarSelector);
+    // this._userId = document.querySelector(userId);
   }
 
   getUserInfo() {
-    //Creates an Object containing the Name and Description/Title
-    const userData = {
-      name: this._name.textContent,
-      description: this._title.textContent,
+    return {
+      profileName: this._profileName.textContent,
+      profileJob: this._profileJob.textContent,
     };
-    return userData;
   }
 
-  setUserInfo(data) {
-    //Sets the Name and Description/Title for a given Object
-    this._name.textContent = data.name;
-    this._title.textContent = data.description;
+  setUserInfo(profileName, profileJob) {
+    this._profileName.textContent = profileName;
+    this._profileJob.textContent = profileJob;
+    this._avatarSelector.alt = `Profile image of ${profileName}`;
+  }
+
+  setAvatar(avatarUrl, avatarAlt) {
+    this._avatarSelector.src = avatarUrl;
+    this._avatarSelector.alt = avatarAlt;
   }
 }
+
+export { UserInfo };
