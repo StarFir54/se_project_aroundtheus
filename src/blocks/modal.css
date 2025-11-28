@@ -69,17 +69,9 @@ modal__content*/
   margin: 0 36px 54px 36px;
 }
 
-/*You have to use the modal__label 
-or
-some div to group the form input, and input error.
-If NOT used, then the error will be displayed at the top of the page.
-*/
 .modal__label {
   display: flex;
   flex-direction: column;
-  /*the position must be relative to make the error message's 
-  absolute position is relative to the label. 
-  See profile-modal__error*/
   position: relative;
 }
 
@@ -114,7 +106,6 @@ If NOT used, then the error will be displayed at the top of the page.
   line-height: 12px;
   color: #ff0000;
   top: 35px;
-  /*Hide the error element initially*/
   visibility: hidden;
 }
 
@@ -164,7 +155,7 @@ If NOT used, then the error will be displayed at the top of the page.
 }
 
 .modal__close {
-  background: url("../images/close_icon.svg");
+  background: url("src/images/close-symbol.svg");
   width: 50px;
   height: 50px;
   background-repeat: no-repeat;

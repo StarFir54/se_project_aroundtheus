@@ -22,7 +22,7 @@ import {
   profileModalJobInput,
   cardTemplateID,
   addCardButton,
-} from "../utils/constants.js";
+} from "../components/constants.js";
 
 // Global variable to select all forms
 // Also convert the pseudo array to normal array using Array.from().
