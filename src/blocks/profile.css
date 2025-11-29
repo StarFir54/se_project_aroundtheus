@@ -1,0 +1,259 @@
+.profile {
+  display: flex;
+  width: 100%;
+  padding: 40px 0 50px 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  /* padding-left: 8px; */
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+
+.profile__avatar {
+  margin: 0;
+}
+
+.profile__name-pen {
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+
+.profile__name {
+  color: white;
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+  max-width: 373px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.profile__pen {
+  background: url("../images/pen.svg");
+  width: 24px;
+  height: 24px;
+  background-size: 10px 10px;
+  border: 1px solid #ffffff;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.profile__pen:hover {
+  opacity: 0.6;
+}
+.profile__name-tag {
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+/*set the profile__avatar-info to relative, 
+else the position:absolute does not work for the avatar edit
+pen. It will positioned relative to the browser.*/
+.profile__avatar-info {
+  display: flex;
+  width: 64%;
+  position: relative;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+
+.profile__add-button {
+  background: url("../images/plus.svg");
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: center;
+  background-size: 22px 22px;
+  cursor: pointer;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+}
+
+/*margin:auto is ineffective here, and is also not needed.
+But we must use position:absolute.
+also the parent element profile__avatar-info must be defined with
+position:relative, so that the avatar edit correctly overlaps in smaller screens.
+See the styling defined for profile__avatar for less than 620 sized device. 
+It is defined as auto for margin. 
+But margin:auto will not work for profile__avatar-edit, if we use position:absolute.
+To make the position:absolute work and also the margin:auto work, we need to explicitly define top, bottom, left,
+right as 0. Note that this is applicable only to smaller screen (<620 px)*/
+.profile__avatar-edit {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* display: flex; */
+  /* margin: auto; */
+  padding: 0;
+  /* z-index: 1; */
+  position: absolute;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  /* cursor: pointer; */
+  /* pointer-events: all; */
+  z-index: 1;
+  /* background: rgba(0, 0, 0, 0.8); */
+  display: none;
+  /* visibility: hidden; */
+  /* transition: visibility 0s, opacity 0.5s linear; */
+}
+
+.profile__avatar-edit_show {
+  display: flex;
+  visibility: visible;
+  /*The following opacity setting is necessary even thouh we are using opacity in transition*/
+  opacity: 1;
+  /*This transition will make the modal slowly be visible instead of abruptly being visible*/
+  /* transition: visibility 0s, opacity 0.5s linear; */
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.profile__avatar-pen {
+  background: url("../images/avatar-pen.svg");
+
+  width: 120px;
+  height: 120px;
+  border: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* align-self: center; */
+  box-sizing: border-box;
+  /* flex-shrink: 0; */
+  cursor: pointer;
+  /* display: flex;
+  visibility: visible;
+  opacity: 1; */
+  pointer-events: all;
+  /* transition: visibility 0s 0.5s, opacity 0.5s linear; */
+  /* padding: 0; */
+  z-index: 2;
+}
+
+/*Adjust the profile__info block, so that the profile
+elements do not overlap*/
+@media screen and (max-width: 740px) {
+  .profile__info {
+    max-width: 70%;
+  }
+
+  .profile__name-pen {
+    align-items: center;
+  }
+
+  .profile__name {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .profile__avatar-info {
+    /* justify-content: center; */
+    justify-content: space-between;
+  }
+
+  /**This is needed to make the avatar edit to have margin:auto
+  applied, at the same time position:absolute is defined*/
+  /* .profile__avatar-edit { */
+  /* top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+  /* max-width: 70%; */
+  /* } */
+  /* .profile__avatar-edit_show {
+    align-self: flex-start;
+  } */
+}
+
+@media screen and (max-width: 620px) {
+  .profile {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    margin: auto;
+    padding: 42px 0 36px 0;
+  }
+
+  .profile__avatar {
+    margin: 0 auto 30px auto;
+  }
+
+  /**This is needed to make the avatar edit to have margin:auto
+  applied, at the same time position:absolute is defined*/
+  .profile__avatar-edit {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto 30px;
+  }
+
+  .profile__pen {
+    width: 18px;
+    height: 18px;
+    background-size: 7px 7px;
+  }
+
+  .profile__add-button {
+    width: 282px;
+    height: 50px;
+    margin: 36px auto 0 auto;
+    background-size: 16px 16px;
+  }
+
+  .profile__name-pen {
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .profile__name-tag {
+    font-size: 14px;
+    line-height: 17px;
+    margin: auto;
+  }
+
+  .profile__avatar-info {
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .profile__info {
+    max-width: 100%;
+    padding: 0;
+  }
+}
